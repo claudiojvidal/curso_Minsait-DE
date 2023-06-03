@@ -1,11 +1,11 @@
 #!/bin/bash
 
-IMPORT_CSV=true
-EXPORT_HDFS=false
+IMPORT_CSV=false
+EXPORT_HDFS=true
 
 CSV_URL="https://raw.githubusercontent.com/caiuafranca/dados_curso/main/"
 CSV_DIR="/workspace/curso_minsait.DE/input/curso_minsait/raw"
-TABLES=("cidade" "estado" "filial" "parceiro" "cliente" "subcategoria" "categoria" "item_pedido" "produto") #"pedido")
+TABLES=("cidade" "estado" "filial" "parceiro" "cliente" "subcategoria" "categoria" "item_pedido" "produto" "pedido")
 
 DATE="$(date --date="-0 day" "+%Y%m%d")"
 PARTICAO="$(date --date="-0 day" "+%Y%m%d")"
