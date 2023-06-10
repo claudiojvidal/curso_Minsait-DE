@@ -12,9 +12,9 @@ TBLPROPERTIES ("skip.header.line.count"="1");
 
 
 CREATE TABLE IF NOT  EXISTS ${TARGET_DATABASE}.${TARGET_TABLE_GERENCIADA} (
-    id_filial string,
-    ds_filial string,
-    id_cidade string
+   id_filial string,
+   ds_filial string,
+   id_cidade string
 )
 PARTITIONED BY (DT_FOTO STRING)
 ROW FORMAT SERDE 'org.apache.hadoop.hive.ql.io.orc.OrcSerde' 
@@ -27,12 +27,12 @@ SET hive.exec.dynamic.partition=true;
 SET hive.exec.dynamic.partition.mode=nonstrict;
 
 INSERT OVERWRITE TABLE
-    ${TARGET_DATABASE}.${TARGET_TABLE_GERENCIADA}
+   ${TARGET_DATABASE}.${TARGET_TABLE_GERENCIADA}
 PARTITION(DT_FOTO) 
 SELECT
-    id_filial string,
-    ds_filial string,
-    id_cidade string,
-	${PARTICAO} as DT_FOTO
+   id_filial string,
+   ds_filial string,
+   id_cidade string,
+   ${PARTICAO} as DT_FOTO
 FROM ${TARGET_DATABASE}.${TARGET_TABLE_EXTERNAL}
 ;

@@ -16,12 +16,12 @@ do
     echo "target table external  :"${TARGET_TABLE_EXTERNAL}
     echo "target table gerenciada:"${TARGET_TABLE_GERENCIADA}
     echo "participacao           :"${PARTICAO}
-#    docker exec -it hive-server beeline -u jdbc:hive2://localhost:10000 \
-#    --hivevar TARGET_DATABASE="${TARGET_DATABASE}"\
-#    --hivevar TARGET_STAGE_DATABASE="${TARGET_STAGE_DATABASE}"\
-#    --hivevar HDFS_DIR="${HDFS_DIR}"\
-#    --hivevar TARGET_TABLE_EXTERNAL="${TARGET_TABLE_EXTERNAL}"\
-#    --hivevar TARGET_TABLE_GERENCIADA="${TARGET_TABLE_GERENCIADA}"\
-#    --hivevar PARTICAO="${PARTICAO}"\
-#    -f ../../hql/create_$table.hql 
+    docker exec -it hive-server beeline -u jdbc:hive2://localhost:10000 \
+    --hivevar TARGET_DATABASE="${TARGET_DATABASE}"\
+    --hivevar TARGET_STAGE_DATABASE="${TARGET_STAGE_DATABASE}"\
+    --hivevar HDFS_DIR="${HDFS_DIR}"\
+    --hivevar TARGET_TABLE_EXTERNAL="${TARGET_TABLE_EXTERNAL}"\
+    --hivevar TARGET_TABLE_GERENCIADA="${TARGET_TABLE_GERENCIADA}"\
+    --hivevar PARTICAO="${PARTICAO}"\
+    -f /input/curso_minsait/hql/create_table_$table.hql 
 done

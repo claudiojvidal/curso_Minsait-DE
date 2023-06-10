@@ -26,13 +26,13 @@ SET hive.exec.dynamic.partition=true;
 SET hive.exec.dynamic.partition.mode=nonstrict;
 
 INSERT OVERWRITE TABLE
-    ${TARGET_DATABASE}.${TARGET_TABLE_GERENCIADA}
+   ${TARGET_DATABASE}.${TARGET_TABLE_GERENCIADA}
 PARTITION(DT_FOTO) 
 SELECT
-    id_pedido string,
-    id_produto string,
-    quantidade string, 
-    vr_unitario string,
-	${PARTICAO} as DT_FOTO
+   id_pedido string,
+   id_produto string,
+   quantidade string, 
+   vr_unitario string,
+   ${PARTICAO} as DT_FOTO
 FROM ${TARGET_DATABASE}.${TARGET_TABLE_EXTERNAL}
 ;
