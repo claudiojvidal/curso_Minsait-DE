@@ -20,17 +20,16 @@ fi
 
 if [ "$EXPORT_HDFS" = true ] ; then
    echo 'Iniciando exportação de arquivos ao HDFS'
-   
+     
    for table in "${TABLES[@]}"
    do   
        echo "tabela $table"
        cd $table
-       hdfs dfs -mkdir /datalake/raw/$table
-       hdfs dfs -chmod 777 /datalake/raw/$table
-       hdfs dfs -copyFromLocal $table.csv /datalake/raw/$table
-       cd../
+       docker exec -it namenode hdfs dfs -mkdir /datalake/raw/$table/
+       docker exec -it namenode hdfs dfs -chmod 777 /datalake/raw/$table/
+       docker exec -it namenode hdfs dfs -copyFromLocal /input/curso_minsait/raw/$table/$table.csv /datalake/raw/$table/
    done
-
+   cd ../
 fi
 
 echo "Finalizando a criacao em ${DATE}"
